@@ -1,0 +1,71 @@
+# conserved species
+A = Atot-(AC+ACMC)
+M = Mtot-(Mstar+MC+ACMC)
+Ctot = C+MC+ACMC*2+AC
+
+# auxiliaries variables
+# to keep track of species computed from the conserved ones
+aux Ctot = Ctot
+aux A = A
+aux M = M
+
+# equations for the species defined with auxiliary variables
+dCtotss/dt = k*Ctot-k*Ctotss
+dAss/dt = k*A-k*Ass
+dMss/dt = k*M-k*Mss
+
+#odes
+dCycB/dt = ksyn_cy-kdeg_cy*CycB*AC-kdegbg_cy*CycB
+dC/dt = ksyn_c20-kassMC*Mstar*C+kdissMC*MC-kassAC*A*C
+	+kdissAC*AC+kdeg*ACMC-kdegbg*C
+dMstar/dt = kact*CycB*M*k_nuk*nuk/(J1+nuk)/(J+M)-kinact*Mstar/(J+Mstar)
+	-kassMC*Mstar*c+kdissMC*MC
+dMC/dt = kassMC*Mstar*C-kdissMC*MC-kassACMC*AC*MC+kdissACMC*ACMC-kdegbg*MC
+dAC/dt = kassAC*A*C-kdissAC*AC-kassACMC*AC*MC+kdissACMC*ACMC-kdegbg*AC
+dACMC/dt = kassACMC*AC*MC-kdissACMC*ACMC-kdeg*ACMC-kdegbg*ACMC
+
+# parameters
+p ksyn_c20 = 36.97
+p ksyn_cy = 316.94
+p kdegbg = 0.02
+p kinAct = 0.45
+p J = 0.06
+p kact = 0.0015
+p k_nuk = 78
+p J1 = 0.5
+p kAssMC = 0.02
+p kdissMC = 0.62
+p kAssAC = 0.023
+p kAssACMC = 0.04
+p kdissAC = 0.66
+p kdissACMC = 0.43
+p kdeg = 1.11
+p kdeg_cy = 0.024
+p kdegbg_cy = 0.068
+p k=10
+p nuk=10
+
+# totals
+p Atot = 150
+p Mtot = 175
+
+# steady states
+i CtotSS = 153
+i ASS = 80
+i MSS = 0
+i CycB = 430
+i C = 25
+i MSTAR = 106
+i MC = 38
+i AC = 28
+i ACMC = 30
+
+# integrator settings
+@ totAl=2000, boundAries=1000
+
+#AUTO settings
+@ dsMAx=.5, dsMin=.0001, ds=-.02, ntst=1500, nmax=2000, npr=500, 
+parmin=0, parmax=32
+@ autoxmin=0, autoxmAx=1, autoymin=0, autoyMAx=100
+done
+
