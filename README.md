@@ -1,5 +1,9 @@
+### xpp_file.ode
+This is the ODE file used in XPPAUT for integration and bifurcation analysis.
+
 ## model_files/
 This folder contains all the files required for running the provided scripts. 
+
 ### model_det_ext.xml
 this is an xml file producing the deterministic model. It is used by parameter_ensemble.py and parameter_sensitivity.py scripts. It is converted to SBML file.
 
@@ -14,6 +18,11 @@ This folder contains the scripts I created to fit the model to experimental data
 ### parameter_ensemble.py
 
 This script uses the deterministic model, introduces the constraints we defined based on measurements and experimental data. First it looks for the local minimum, then starting from the optimized parameter set it build a parameter ensemble which consists of ~100 individual parameter sets which fulfill the given constraints.
+
+### ev_of_pfl.py
+
+This script is used to simulate the experiment which provided evidence of a positive feedback loop in the system
+
 
 ### figures_arrest.py
 
