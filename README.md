@@ -13,6 +13,9 @@ this is a .psc file required by the stochastic package.  It is used for simulati
 ### model_washout.psc
 this is a .psc file required by the stochastic package.  It is used for simulating cells in condition where the drug is washed out
 
+## parameters
+This folder contains the tables presenting the parameters, reaction rates, concentrations of the model, with references and explanations provided.
+
 ## scripts/
 This folder contains the scripts I created to fit the model to experimental data, for studying the behavior of the model and to perform stochastic simulations to reproduce experiments
 ### parameter_ensemble.py
